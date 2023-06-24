@@ -1,27 +1,49 @@
-import { StatusBar } from 'expo-status-bar';
-import { KeyboardAvoidingView, StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
+import { KeyboardAvoidingView, StyleSheet, Text, View, TouchableOpacity, TextInput, Keyboard } from 'react-native';
 import Task from './components/Task';
+import React, {useState} from 'react';
 
 export default function App() {
-  tasks = []
+  const [tasks, setTasks] = useState([]);
+  const [task, setTask] = useState();
+
+  const handleAddTask = () => {
+    Keyboard.dismiss();
+    setTask(null);
+
+    setTasks([...tasks, task]);
+  }
+
+  const deleteTask = (index) => {
+    let itemsCopy = [...tasks];
+    itemsCopy.splice(index, 1);
+
+    setTasks(itemsCopy);
+}
+
 
   return (
     <View style={styles.container}>
 
-      {/* Today's tasks! */}
       <View style={styles.taskWrapper}>
         <Text style={styles.sectionTitle}>Today's tasks!</Text>
 
         <View style={styles.items}>
-          {/* This is where the tasks will go! */}
-          <Task text={'Taskweo fjnwe jnfwen fwenfi wenfioewn fowenffrrve rvwerong iieorng 1'} />
-          <Task text={'Task 2'} />
+          {
+            tasks.map((item, index) => {
+              return (
+                <TouchableOpacity key={index} onPress={() => deleteTask(index)}>
+                  <Task text={item} />
+                </TouchableOpacity>
+              )
+            })
+          }
         </View>
       </View>
 
       <KeyboardAvoidingView style={styles.addTaskWrapper} behavior='height'>
-        <TextInput style={styles.input} placeholder={'Write a task'} />
-        <TouchableOpacity style={styles.addTaskButton}>
+        <TextInput style={styles.input} placeholder={'Write a task'} value={task} onChangeText={text => setTask(text)}/>
+        <TouchableOpacity style={styles.addTaskButton}
+          onPress={handleAddTask}>
           <Text style={styles.buttonTask}>+</Text>
         </TouchableOpacity>
       </KeyboardAvoidingView>
@@ -43,9 +65,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     paddingBottom: 30,
   },
-  items: {
-
-  },
   addTaskWrapper: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -63,6 +82,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginLeft: 20,
     textAlign: 'center',
+    paddingRight: 10,
+    paddingLeft: 10,
   },
   addTaskButton: {
     width: 60,
