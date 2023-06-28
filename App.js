@@ -1,13 +1,14 @@
 import { KeyboardAvoidingView, Text, View, TouchableOpacity, TextInput, Keyboard } from 'react-native';
 import Task from './components/Task';
-import React, {useState} from 'react';
+import AddTaskComponent from './components/AddTaskComponent';
+import React, { useState } from 'react';
 import styles from './static/styles/appStyleSheet';
 
 export default function App() {
   const [tasks, setTasks] = useState([]);
   const [task, setTask] = useState();
 
-  const handleAddTask = () => {
+  const addTask = () => {
     Keyboard.dismiss();
     setTask(null);
 
@@ -19,7 +20,7 @@ export default function App() {
     itemsCopy.splice(index, 1);
 
     setTasks(itemsCopy);
-}
+  }
 
   return (
     <View style={styles.container}>
@@ -40,13 +41,7 @@ export default function App() {
         </View>
       </View>
 
-      <KeyboardAvoidingView style={styles.addTaskWrapper} behavior='height'>
-        <TextInput style={styles.input} placeholder={'Write a task'} value={task} onChangeText={text => setTask(text)}/>
-        <TouchableOpacity style={styles.addTaskButton}
-          onPress={handleAddTask}>
-          <Text style={styles.buttonTask}>+</Text>
-        </TouchableOpacity>
-      </KeyboardAvoidingView>
+      <AddTaskComponent task={task} setTask={setTask} addTask={addTask} />
     </View>
   );
 }
