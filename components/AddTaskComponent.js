@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, TouchableOpacity, KeyboardAvoidingView, TextInput } from 'react-native';
 import styles from '../static/styles/addTaskStyleSheet';
 
-const Task = (properties) => {
+const AddTaskComponent = (properties) => {
     return (
       <KeyboardAvoidingView style={styles.addTaskWrapper} behavior="height">
         <TextInput
@@ -18,4 +18,4 @@ const Task = (properties) => {
     );
 }
 
-export default Task
+export default AddTaskComponent

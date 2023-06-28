@@ -1,8 +1,8 @@
-import { KeyboardAvoidingView, Text, View, TouchableOpacity, TextInput, Keyboard } from 'react-native';
-import Task from './components/Task';
+import { View, Keyboard } from 'react-native';
 import AddTaskComponent from './components/AddTaskComponent';
 import React, { useState } from 'react';
 import styles from './static/styles/appStyleSheet';
+import TaskWrapper from './components/TaskWrapper';
 
 export default function App() {
   const [tasks, setTasks] = useState([]);
@@ -24,22 +24,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-
-      <View name={'taskWrapper'} style={styles.taskWrapper}>
-        <Text style={styles.sectionTitle}>Today's tasks!</Text>
-
-        <View style={styles.items}>
-          {
-            tasks.map((item, index) => {
-              return (
-                <TouchableOpacity key={index} onPress={() => deleteTask(index)}>
-                  <Task text={item} />
-                </TouchableOpacity>
-              )
-            })
-          }
-        </View>
-      </View>
+      <TaskWrapper deleteTask={deleteTask} tasks={tasks} />
 
       <AddTaskComponent task={task} setTask={setTask} addTask={addTask} />
     </View>
