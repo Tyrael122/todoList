@@ -24,7 +24,7 @@ export default function App() {
   return (
     <View style={styles.container}>
 
-      <View style={styles.taskWrapper}>
+      <View name={'taskWrapper'} style={styles.taskWrapper}>
         <Text style={styles.sectionTitle}>Today's tasks!</Text>
 
         <View style={styles.items}>
