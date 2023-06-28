@@ -1,8 +1,8 @@
-import { View, Keyboard } from 'react-native';
-import AddTaskComponent from './components/AddTaskComponent';
 import React, { useState } from 'react';
-import styles from './static/styles/appStyleSheet';
-import TaskWrapper from './components/TaskWrapper';
+import { View, Keyboard } from 'react-native';
+import AddTaskComponent from './app/components/AddTaskComponent';
+import TaskWrapper from './app/components/TaskWrapper';
+import styles from './app/static/styles/appStyleSheet';
 
 export default function App() {
   const [tasks, setTasks] = useState([]);
