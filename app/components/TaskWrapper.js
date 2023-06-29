@@ -12,10 +12,10 @@ const TaskWrapper = (properties) => {
             properties.tasks.map((item, index) => {
               return (
                 <Task
-                  text={item}
+                  text={item.text}
                   key={index}
                   onPressComplete={() => properties.onPressComplete(index)}
-                  isCompleted={properties.isCompleted}
+                  isCompleted={item.isCompleted}
                   onPressDelete={() => properties.onPressDelete(index)}
                   onPressEdit={() => properties.onPressEdit(index)}
                 />
