@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
     taskWrapper: {
         paddingTop: 80,
         paddingHorizontal: 20,
-        maxHeight: '85%',
+        maxHeight: '87%',
     },
     sectionTitle: {
         fontSize: 24,
