@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { View, Keyboard } from 'react-native';
 import AddTaskComponent from './app/components/AddTaskComponent';
+import EditTaskModal from './app/components/EditTaskModal';
 import TaskWrapper from './app/components/TaskWrapper';
 import styles from './app/static/styles/appStyleSheet';
 
 export default function App() {
   const [tasks, setTasks] = useState([]);
   const [taskText, setTaskText] = useState();
+  const [isEditing, setEditionMode] = useState(true);
 
     const completeTask = (index) => {
       let itemsCopy = [...tasks];
@@ -34,6 +36,8 @@ export default function App() {
   const editTask = (index) => {
     let itemsCopy = [...tasks];
 
+    setEditionMode(true);
+
     setTaskText(itemsCopy[index].text);
     deleteTask(index);
   }
@@ -43,6 +47,8 @@ export default function App() {
       <TaskWrapper onPressDelete={deleteTask} onPressComplete={completeTask} onPressEdit={editTask} tasks={tasks} />
 
       <AddTaskComponent task={taskText} setTask={setTaskText} onPress={addTask} />
+
+      <EditTaskModal visible={isEditing} />
     </View>
   );
 }
