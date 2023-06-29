@@ -5,6 +5,9 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#E8EAED', 
     },
+    strikedText: {
+        textDecorationLine: 'line-through',
+    },
 });
 
 export default styles;

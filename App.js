@@ -7,6 +7,11 @@ import styles from './app/static/styles/appStyleSheet';
 export default function App() {
   const [tasks, setTasks] = useState([]);
   const [task, setTask] = useState();
+  const [isCompleted, setIsStriked] = useState(false);
+
+    const completeTask = () => {
+        setIsStriked(!isCompleted);
+    };
 
   const addTask = () => {
     Keyboard.dismiss();
@@ -21,12 +26,19 @@ export default function App() {
 
     setTasks(itemsCopy);
   }
+  
+  const editTask = (index) => {
+    let itemsCopy = [...tasks];
+
+    setTask(itemsCopy[index]);
+    deleteTask(index);
+  }
 
   return (
     <View style={styles.container}>
-      <TaskWrapper deleteTask={deleteTask} tasks={tasks} />
+      <TaskWrapper onPressDelete={deleteTask} onPressComplete={completeTask} isCompleted={isCompleted} onPressEdit={editTask} tasks={tasks} />
 
-      <AddTaskComponent task={task} setTask={setTask} addTask={addTask} />
+      <AddTaskComponent task={task} setTask={setTask} onPress={addTask} />
     </View>
   );
 }

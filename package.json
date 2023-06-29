@@ -15,13 +15,14 @@
     "react-native": "0.71.8",
     "react-native-web": "~0.18.10",
     "react-dom": "18.2.0",
-    "@expo/webpack-config": "^18.0.1"
+    "@expo/webpack-config": "^18.0.1",
+    "expo-dev-client": "~2.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
   },
   "private": true,
-    "resolutions": {
-       "react-devtools-core": "~4.25.0"
-    }
+  "resolutions": {
+    "react-devtools-core": "~4.25.0"
+  }
 }

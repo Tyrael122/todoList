@@ -12,10 +12,15 @@ const TaskWrapper = (properties) => {
           {
             properties.tasks.map((item, index) => {
               return (
-                <TouchableOpacity key={index} onPress={() => properties.deleteTask(index)}>
-                  <Task text={item} />
-                </TouchableOpacity>
-              )
+                <Task
+                  text={item}
+                  key={index}
+                  onPressComplete={() => properties.onPressComplete(index)}
+                  isCompleted={properties.isCompleted}
+                  onPressDelete={() => properties.onPressDelete(index)}
+                  onPressEdit={() => properties.onPressEdit(index)}
+                />
+              );
             })
           }
         </View>

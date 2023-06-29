@@ -11,7 +11,7 @@ const AddTaskComponent = (properties) => {
           value={properties.task}
           onChangeText={(text) => properties.setTask(text)}
         />
-        <TouchableOpacity style={styles.addTaskButton} onPress={properties.addTask}>
+        <TouchableOpacity style={styles.addTaskButton} onPress={properties.onPress}>
           <Text style={styles.buttonTask}>+</Text>
         </TouchableOpacity>
       </KeyboardAvoidingView>
