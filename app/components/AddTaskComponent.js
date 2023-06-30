@@ -4,14 +4,17 @@ import styles from '../static/styles/addTaskStyleSheet';
 
 const AddTaskComponent = (properties) => {
     return (
-      <KeyboardAvoidingView style={styles.addTaskWrapper} behavior="height">
+      <KeyboardAvoidingView style={properties.style} behavior="height">
         <TextInput
           style={styles.input}
           placeholder={"Write a task"}
           value={properties.task}
           onChangeText={(text) => properties.setTask(text)}
         />
-        <TouchableOpacity style={styles.addTaskButton} onPress={properties.onPress}>
+        <TouchableOpacity
+          style={styles.addTaskButton}
+          onPress={properties.onPress}
+        >
           <Text style={styles.buttonTask}>+</Text>
         </TouchableOpacity>
       </KeyboardAvoidingView>

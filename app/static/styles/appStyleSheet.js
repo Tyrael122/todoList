@@ -8,6 +8,14 @@ const styles = StyleSheet.create({
     strikedText: {
         textDecorationLine: 'line-through',
     },
+    addTaskWrapper: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        position: 'absolute',
+        width: '100%',
+        bottom: 40,
+        alignItems: 'center',
+    },
 });
 
 export default styles;

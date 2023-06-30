@@ -1,15 +1,21 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 24,
-        backgroundColor: 'grey',
-      },
-      contentContainer: {
-        flex: 1,
-        alignItems: 'center',
-      },
+  bottomNavigationView: {
+    backgroundColor: "#FFF",
+    width: "100%",
+    height: 200,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  addTaskWrapper: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    position: "absolute",
+    width: "100%",
+    bottom: 40,
+    alignItems: "center",
+  },
 });
 
 export default styles;

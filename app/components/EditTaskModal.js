@@ -1,13 +1,30 @@
 import React from 'react';
-import { Text, TouchableOpacity, KeyboardAvoidingView, TextInput, Modal, View } from 'react-native';
+import { SafeAreaView, StyleSheet, View, Text, Button } from 'react-native';
 import styles from '../static/styles/editTaskModalStyleSheet';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import AddTaskComponent from '../components/AddTaskComponent';
+import { BottomSheet } from 'react-native-btr';
 
 const EditTaskModal = (properties) => {
-    return (
-      <View style={styles.container}>
+  const hideBottomSheet = () => {
+    properties.setVisible(false);
+  };
+
+  return (
+    <BottomSheet
+      visible={properties.visible}
+      onBackButtonPress={hideBottomSheet}
+      onBackdropPress={hideBottomSheet}
+    >
+      <View style={styles.bottomNavigationView}>
+        <AddTaskComponent
+          style={styles.addTaskWrapper}
+          task={properties.task}
+          setTask={properties.setTask}
+          onPress={properties.saveEditedTask}
+        />
       </View>
-    );
+    </BottomSheet>
+  );
 }
 
 export default EditTaskModal

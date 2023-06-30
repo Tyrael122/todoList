@@ -42,13 +42,40 @@ export default function App() {
     deleteTask(index);
   }
 
+  const saveEditedTask = (index) => {
+    let itemsCopy = [...tasks];
+
+    setEditionMode(true);
+
+    setTaskText(itemsCopy[index].text);
+    deleteTask(index);
+  }
+
+
+
   return (
     <View style={styles.container}>
-      <TaskWrapper onPressDelete={deleteTask} onPressComplete={completeTask} onPressEdit={editTask} tasks={tasks} />
+      <TaskWrapper
+        onPressDelete={deleteTask}
+        onPressComplete={completeTask}
+        onPressEdit={editTask}
+        tasks={tasks}
+      />
 
-      <AddTaskComponent task={taskText} setTask={setTaskText} onPress={addTask} />
+      <AddTaskComponent
+        style={styles.addTaskWrapper}
+        task={taskText}
+        setTask={setTaskText}
+        onPress={addTask}
+      />
 
-      <EditTaskModal visible={isEditing} />
+      <EditTaskModal
+        visible={isEditing}
+        task={taskText}
+        setTask={setTaskText}
+        saveEditedTask={saveEditedTask}
+        setVisible={setEditionMode}
+      />
     </View>
   );
 }
